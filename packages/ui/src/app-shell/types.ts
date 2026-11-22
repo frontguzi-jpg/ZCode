@@ -213,7 +213,7 @@ export interface GitChangeSummary {
   removed: number;
 }
 
-export type WorkspaceMainView = "chat" | "automations" | "plugin-store";
+export type WorkspaceMainView = "chat" | "automations" | "plugin-store" | "project-workflows";
 
 export interface WorkspaceShellLayoutProps extends Omit<AppProps, "baseFeedbackService"> {
   workspaceReadOnlyReason?: string;
@@ -233,6 +233,8 @@ export interface WorkspaceShellLayoutProps extends Omit<AppProps, "baseFeedbackS
   onOpenAutomationConsumed: () => void;
   handleOpenAutomations: OpenAutomationsMain;
   handleOpenPluginStore: () => void;
+  /** work 模式「项目工作流」容器入口；与自动化/插件市场同一套主视图路由。 */
+  handleOpenProjectWorkflows: () => void;
   workspaceShellZCodeState: WorkspaceShellZCodeState;
   theme: Theme;
   isMacFullscreen: boolean;

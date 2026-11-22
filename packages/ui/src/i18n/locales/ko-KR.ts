@@ -2467,6 +2467,7 @@ const koKR: Record<string, string> = {
   "workspace.openWorkspace": "워크스페이스 열기",
   "workspace.openFolder": "폴더 열기",
   "workspace.openPluginsSettings": "플러그인 마켓플레이스",
+  "workspace.openProjectWorkflows": "프로젝트 워크플로",
   "workspace.backToWorkspace": "워크스페이스로 돌아가기",
   "workspace.wslUncPrompt.title": "WSL 원격 연결로 여시겠습니까?",
   "workspace.wslUncPrompt.description":
@@ -7987,6 +7988,14 @@ const koKR: Record<string, string> = {
   "taskList.workflowRun.liveCount": "워크플로 {count}개 실행 중",
   "taskGroup.cronGroupName": "예약된 작업",
   "workspace.openScheduledSettings": "자동화",
+  "workProjectWorkflows.title": "프로젝트 워크플로",
+  "workProjectWorkflows.subtitle":
+    "저장된 워크플로를 프로젝트별로 모아 보는 읽기 전용 뷰입니다. 생성, 수정, 실행은 채팅과 '저장된 워크플로'에서 계속 진행합니다.",
+  "workProjectWorkflows.modeLabel": "Work 모드",
+  "workProjectWorkflows.refresh": "새로고침",
+  "workProjectWorkflows.empty.title": "표시할 워크플로가 없습니다",
+  "workProjectWorkflows.empty.description":
+    "채팅에서 워크플로를 만들고 저장하면 해당 프로젝트 아래에 표시됩니다.",
   "settings.automations.title": "자동화",
   "automations.breadcrumbLabel": "자동화 경로",
   "settings.automations.betaBadge": "Beta",

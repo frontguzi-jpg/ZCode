@@ -163,8 +163,11 @@ export interface ProjectSidebarProps {
   repoWikiActive?: boolean;
   onOpenAutomations?: () => void;
   onOpenPluginStore?: () => void;
+  /** work 模式「项目工作流」容器入口；code 模式不传即隐藏。 */
+  onOpenProjectWorkflows?: () => void;
   automationsActive?: boolean;
   pluginStoreActive?: boolean;
+  projectWorkflowsActive?: boolean;
   /** 「插件市场」之后的扩展导航条目（docs/plugins/extension-host.md §16.4）；Shell 提供打开入口。 */
   navPrimarySlot?: import("@/extension-slots/contract.js").NavPrimarySlotHost;
   onFileTreeOpenChange?: (open: boolean) => void;

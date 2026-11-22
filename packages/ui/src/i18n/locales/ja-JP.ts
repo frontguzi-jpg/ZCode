@@ -2539,6 +2539,7 @@ const jaJP: Record<string, string> = {
   "workspace.openWorkspace": "ワークスペースを開く",
   "workspace.openFolder": "フォルダを開く",
   "workspace.openPluginsSettings": "プラグインマーケットプレイス",
+  "workspace.openProjectWorkflows": "プロジェクトワークフロー",
   "workspace.backToWorkspace": "ワークスペースに戻る",
   "workspace.wslUncPrompt.title": "WSL リモート接続で開きますか？",
   "workspace.wslUncPrompt.description":
@@ -8177,6 +8178,14 @@ const jaJP: Record<string, string> = {
   "taskList.workflowRun.liveCount": "{count} 個のワークフローを実行中",
   "taskGroup.cronGroupName": "スケジュールタスク",
   "workspace.openScheduledSettings": "オートメーション",
+  "workProjectWorkflows.title": "プロジェクトワークフロー",
+  "workProjectWorkflows.subtitle":
+    "保存済みワークフローをプロジェクトごとにまとめた読み取り専用ビューです。作成・修正・実行はチャットと「保存済みワークフロー」で行います。",
+  "workProjectWorkflows.modeLabel": "Work モード",
+  "workProjectWorkflows.refresh": "更新",
+  "workProjectWorkflows.empty.title": "表示できるワークフローがまだありません",
+  "workProjectWorkflows.empty.description":
+    "チャットでワークフローを作成・保存すると、所属プロジェクトの下に表示されます。",
   "settings.automations.title": "オートメーション",
   "automations.breadcrumbLabel": "オートメーションのパス",
   "settings.automations.betaBadge": "Beta",

@@ -2,7 +2,7 @@
 
 Status: implemented. This document is the entry point to the feature: what it is, the
 pieces it is made of, how a workflow moves through them, and the words and principles
-every component shares. Seven component documents, listed under "The pieces", own the
+every component shares. Eight component documents, listed under "The pieces", own the
 details; this one points at them and repeats as little as it can.
 
 ## What it is and why it exists
@@ -121,6 +121,7 @@ subagent transcript ends in a folded engine epilogue.
 | `docs/dynamic-workflow/concurrency.md` | the two bounds, request tickets, the adaptive controller, the model-error policy, tool-side requests |
 | `docs/dynamic-workflow/presentation.md` | the display contract, the timeline model, the live overlay, the run card and run pane |
 | `docs/dynamic-workflow/transcript-and-notifications.md` | notifications, the completion card, the script transcript, the epilogue fold |
+| `docs/dynamic-workflow/work-project-container.md` | the work-mode project container: entry, read projection, per-project groups, kill switch, acceptance |
 
 ## The life of a workflow
 

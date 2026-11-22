@@ -69,6 +69,8 @@ import type {
   SavedWorkflowsOpenRunParams,
 } from "@/settings/saved-workflows/SavedWorkflowsSection.js";
 import { AutomationsMainBreadcrumbFrame } from "@/settings/AutomationsMainBreadcrumbFrame.js";
+import { WorkProjectWorkflowsPage } from "@/work-project/WorkProjectWorkflowsPage.js";
+import { isWorkProjectWorkflowsEnabled } from "@/work-project/workProjectWorkflowsPreference.js";
 import { PluginStorePage } from "@/settings/PluginStorePage.js";
 import { TaskFindDialog } from "@/quickpick/TaskFindDialog.js";
 import { WebRemoteControlMobileShell } from "@/WebRemoteControlMobileShell.js";
@@ -319,6 +321,7 @@ const WorkspaceShellLayoutContent = memo(function WorkspaceShellLayoutComponent(
   onOpenAutomationConsumed,
   handleOpenAutomations,
   handleOpenPluginStore,
+  handleOpenProjectWorkflows,
   onConnectRemote,
   onSelectRemoteProject,
   onCancelRemoteProject,
@@ -1479,12 +1482,19 @@ const WorkspaceShellLayoutContent = memo(function WorkspaceShellLayoutComponent(
     [activeTaskId, handleOpenDraftPluginUi, showChatMainView],
   );
   const primaryNavigationBack =
-    workspaceMainView === "plugin-store" ? showChatMainView : handleTaskNavBack;
-  const canPrimaryNavigationBack = workspaceMainView === "plugin-store" || canTaskNavBack;
+    workspaceMainView === "plugin-store" || workspaceMainView === "project-workflows"
+      ? showChatMainView
+      : handleTaskNavBack;
+  const canPrimaryNavigationBack =
+    workspaceMainView === "plugin-store" ||
+    workspaceMainView === "project-workflows" ||
+    canTaskNavBack;
   useEffect(() => {
     if (
       isWebRemoteControlShell &&
-      (workspaceMainView === "automations" || workspaceMainView === "plugin-store")
+      (workspaceMainView === "automations" ||
+        workspaceMainView === "plugin-store" ||
+        workspaceMainView === "project-workflows")
     ) {
       // 修复原因：手机远控复用桌面 shell 时可能保留上一次主视图状态；
       // 远控不承载 Automations，必须立即回落到 continuous/replayable 边界之外的聊天页。
@@ -2311,7 +2321,9 @@ const WorkspaceShellLayoutContent = memo(function WorkspaceShellLayoutComponent(
   // 与 Task Header 分叉。桌面端统一复用 WorkspaceHeader，只由 variant 裁剪 task 专属内容；
   // 手机远控无 active task 时仍不渲染桌面 chrome，继续遵守 replayable overlay 边界。
   const shouldRenderMainViewHeader =
-    workspaceMainView !== "automations" && workspaceMainView !== "plugin-store";
+    workspaceMainView !== "automations" &&
+    workspaceMainView !== "plugin-store" &&
+    workspaceMainView !== "project-workflows";
   const shouldRenderWorkspaceHeader =
     shouldRenderMainViewHeader && (activeTaskId !== null || isDesktop);
   // 修复原因：ErrorBoundary resetKeys 的数组如果每次 render 都重新创建，
@@ -2384,6 +2396,10 @@ const WorkspaceShellLayoutContent = memo(function WorkspaceShellLayoutComponent(
       automationsActive={workspaceMainView === "automations"}
       onOpenPluginStore={handleOpenPluginStore}
       pluginStoreActive={workspaceMainView === "plugin-store"}
+      onOpenProjectWorkflows={
+        isOfficeMode && isWorkProjectWorkflowsEnabled() ? handleOpenProjectWorkflows : undefined
+      }
+      projectWorkflowsActive={workspaceMainView === "project-workflows"}
       navPrimarySlot={navPrimarySlot}
       // 桌面没有 mobile 导航动作；内联包装曾让右侧开关穿透侧栏 memo，重复渲染全部项目。
       onWebRemoteTaskOpen={
@@ -2570,6 +2586,33 @@ const WorkspaceShellLayoutContent = memo(function WorkspaceShellLayoutComponent(
                 </div>
               </AutomationsMainBreadcrumbFrame>
             </main>
+          ) : workspaceMainView === "project-workflows" &&
+            isOfficeMode &&
+            !isWebRemoteControlShell &&
+            isWorkProjectWorkflowsEnabled() ? (
+            <div className="flex h-full min-h-0 flex-1 flex-col bg-background">
+              <AutomationsMainBreadcrumbFrame
+                isDesktop={Boolean(isDesktop)}
+                sectionLabel={intl.formatMessage({ id: "workProjectWorkflows.title" })}
+                ariaLabel={intl.formatMessage({ id: "settings.breadcrumbLabel" })}
+              >
+                <ScopedErrorBoundary
+                  scope="project-workflows-main"
+                  resetKeys={workspaceOnlyResetKeys}
+                  variant="panel"
+                  className="h-full"
+                >
+                  <WorkProjectWorkflowsPage
+                    workspacePath={workspaceAbsPath}
+                    {...(workspaceIdentity ? { workspaceIdentity } : {})}
+                    onCreateViaChat={handleCreateAutomationInChat}
+                    onNavigateToLaunchedRun={handleNavigateToLaunchedRun}
+                    onOpenWorkflowRun={handleOpenSavedWorkflowRun}
+                    onOpenWorkflowArtifact={handleOpenSavedWorkflowArtifact}
+                  />
+                </ScopedErrorBoundary>
+              </AutomationsMainBreadcrumbFrame>
+            </div>
           ) : (
             <div className="relative flex h-full min-h-0 min-w-0 flex-1 flex-col">
               {/* Bugfix: 手机远控聊天页中间层必须继续提供 flex 高度链。
@@ -3115,7 +3158,9 @@ const WorkspaceShellLayoutContent = memo(function WorkspaceShellLayoutComponent(
                     </section>
                   </ResizablePanel>
                   {isWebRemoteControlShell ||
-                  (workspaceMainView !== "automations" && workspaceMainView !== "plugin-store") ? (
+                  (workspaceMainView !== "automations" &&
+                    workspaceMainView !== "plugin-store" &&
+                    workspaceMainView !== "project-workflows") ? (
                     <AnimatedTerminalPanel
                       frameClassName={cn(
                         isSidePaneVisible

@@ -1,4 +1,4 @@
-import { Blocks, CalendarClock } from "lucide-react";
+import { Blocks, CalendarClock, Workflow } from "lucide-react";
 import { memo } from "react";
 import { TID_AUTOMATIONS_OPEN } from "@zcode/shared/test-ids";
 import type { ProjectSidebarProps } from "@/project-sidebar/contract.js";
@@ -19,6 +19,8 @@ export const ProjectSidebarNavigation = memo(function ProjectSidebarNavigation({
     | "isWebRemoteControl"
     | "onOpenAutomations"
     | "automationsActive"
+    | "onOpenProjectWorkflows"
+    | "projectWorkflowsActive"
     | "onOpenPluginStore"
     | "pluginStoreActive"
     | "webRemoteControlWorkspaceSwitcher"
@@ -52,6 +54,19 @@ export const ProjectSidebarNavigation = memo(function ProjectSidebarNavigation({
         >
           <CalendarClock className="size-4" />
           {intl.formatMessage({ id: "workspace.openScheduledSettings" })}
+        </Button>
+      ) : null}
+      {!props.isWebRemoteControl && props.onOpenProjectWorkflows ? (
+        <Button
+          variant="ghost"
+          size="lg"
+          className={`w-full justify-start gap-2 ${props.projectWorkflowsActive ? "bg-selected text-foreground" : ""}`}
+          aria-pressed={props.projectWorkflowsActive ?? false}
+          data-testid="project-workflows-sidebar-open"
+          onClick={() => props.onOpenProjectWorkflows?.()}
+        >
+          <Workflow className="size-4" />
+          {intl.formatMessage({ id: "workspace.openProjectWorkflows" })}
         </Button>
       ) : null}
       {!props.isWebRemoteControl ? (

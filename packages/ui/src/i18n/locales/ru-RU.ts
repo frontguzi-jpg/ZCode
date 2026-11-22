@@ -2510,6 +2510,7 @@ const ruRU: Record<string, string> = {
   "workspace.openWorkspace": "Открыть рабочее пространство",
   "workspace.openFolder": "Открыть папку",
   "workspace.openPluginsSettings": "Маркетплейс плагинов",
+  "workspace.openProjectWorkflows": "Рабочие процессы проекта",
   "workspace.backToWorkspace": "К рабочей области",
   "workspace.wslUncPrompt.title": "Открыть через удалённое подключение WSL?",
   "workspace.wslUncPrompt.description":
@@ -8134,6 +8135,14 @@ const ruRU: Record<string, string> = {
   "taskList.workflowRun.liveCount": "Выполняется рабочих процессов: {count}",
   "taskGroup.cronGroupName": "Запланированные задачи",
   "workspace.openScheduledSettings": "Автоматизации",
+  "workProjectWorkflows.title": "Рабочие процессы проекта",
+  "workProjectWorkflows.subtitle":
+    "Сохранённые процессы, сгруппированные по проектам. Это представление только для чтения; создание, изменение и запуск по-прежнему выполняются в чате и разделе «Сохранённые процессы».",
+  "workProjectWorkflows.modeLabel": "Режим Work",
+  "workProjectWorkflows.refresh": "Обновить",
+  "workProjectWorkflows.empty.title": "Пока нет процессов для отображения",
+  "workProjectWorkflows.empty.description":
+    "Сохранённые процессы появятся здесь под своим проектом после создания и сохранения в чате.",
   "settings.automations.title": "Автоматизации",
   "automations.breadcrumbLabel": "Путь автоматизации",
   "settings.automations.betaBadge": "Beta",

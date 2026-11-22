@@ -2804,6 +2804,7 @@ const enUS: Record<string, string> = {
   "workspace.openWorkspace": "Open workspace",
   "workspace.openFolder": "Open folder",
   "workspace.openPluginsSettings": "Plugin Marketplace",
+  "workspace.openProjectWorkflows": "Project workflows",
   "workspace.backToWorkspace": "Back to workspace",
   "workspace.wslUncPrompt.title": "Open this through WSL remote connection?",
   "workspace.wslUncPrompt.description":
@@ -8410,6 +8411,14 @@ const enUS: Record<string, string> = {
   "taskList.workflowRun.liveCount": "{count} workflows running",
   "taskGroup.cronGroupName": "Scheduled tasks",
   "workspace.openScheduledSettings": "Automations",
+  "workProjectWorkflows.title": "Project workflows",
+  "workProjectWorkflows.subtitle":
+    "Saved workflows grouped by project. This is a read-only view; creating, revising, and running still happen in chat and Saved workflows.",
+  "workProjectWorkflows.modeLabel": "Work mode",
+  "workProjectWorkflows.refresh": "Refresh",
+  "workProjectWorkflows.empty.title": "No workflows to show yet",
+  "workProjectWorkflows.empty.description":
+    "Once you create and save a workflow in chat, it appears here under its project.",
   "settings.automations.title": "Automations",
   "automations.breadcrumbLabel": "Automation path",
   "settings.automations.betaBadge": "Beta",

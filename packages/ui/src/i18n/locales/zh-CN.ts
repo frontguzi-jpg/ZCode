@@ -2603,6 +2603,7 @@ const zhCN: Record<string, string> = {
   "workspace.openWorkspace": "打开工作区",
   "workspace.openFolder": "打开文件夹",
   "workspace.openPluginsSettings": "插件市场",
+  "workspace.openProjectWorkflows": "项目工作流",
   "workspace.backToWorkspace": "返回工作区",
   "workspace.wslUncPrompt.title": "建议通过 WSL 远程连接打开",
   "workspace.wslUncPrompt.description":
@@ -7976,6 +7977,13 @@ const zhCN: Record<string, string> = {
   // ---- 自动化 / Automations ----
   // Automations 同时包含定时任务和闲时任务，顶层入口不能误用其中一个子类型的名称。
   "workspace.openScheduledSettings": "自动化",
+  "workProjectWorkflows.title": "项目工作流",
+  "workProjectWorkflows.subtitle":
+    "按项目汇总已保存的工作流。这里是只读聚合视图，创建、修订和运行仍在对话和「已保存工作流」里完成。",
+  "workProjectWorkflows.modeLabel": "Work 模式",
+  "workProjectWorkflows.refresh": "刷新",
+  "workProjectWorkflows.empty.title": "还没有可聚合的工作流",
+  "workProjectWorkflows.empty.description": "在对话里创建并保存工作流后，会按所属项目出现在这里。",
   "settings.automations.title": "自动化",
   "automations.breadcrumbLabel": "自动化路径",
   "settings.automations.betaBadge": "Beta",

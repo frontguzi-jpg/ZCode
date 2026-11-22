@@ -939,6 +939,10 @@ export function App({
     preserveNextSettingsExit();
     setWorkspaceMainView("plugin-store");
   }, [preserveNextSettingsExit]);
+  const handleNavigateToProjectWorkflowsMain = useCallback(() => {
+    preserveNextSettingsExit();
+    setWorkspaceMainView("project-workflows");
+  }, [preserveNextSettingsExit]);
   const handleOpenAutomationConsumed = useCallback(() => {
     setOpenAutomationId(null);
     setOpenAutomationTab(null);
@@ -1259,6 +1263,7 @@ export function App({
             onOpenAutomationConsumed={handleOpenAutomationConsumed}
             handleOpenAutomations={handleOpenAutomations}
             handleOpenPluginStore={handleOpenPluginStoreForScope}
+            handleOpenProjectWorkflows={handleNavigateToProjectWorkflowsMain}
             onConnectRemote={onConnectRemote}
             onSelectRemoteProject={onSelectRemoteProject}
             onCancelRemoteProject={onCancelRemoteProject}
